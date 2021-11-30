@@ -8,13 +8,22 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table>
+        <th>id</th>
+        <th>titre</th>
+        <th>contenu</th>
+        <th>date</th>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/app/src/Controller/ArticleController.php'|file_link(0) }}">src/Controller/ArticleController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/app/templates/article/index.html.twig'|file_link(0) }}">templates/article/index.html.twig</a></code></li>
-    </ul>
-</div>
+            {% for article in articles %}
+            <tr>
+                <td>{{article.id}}</td>
+                <td>{{article.title}}</td>
+                <td>{{article.content|slice(0,300)~ '...'}} <a href="http://laurel.lpweb-lannion.fr:7775/article/{{article.id}}">Voir plus</a>  </td>
+                <td>{{article.createdAt|date('d-m-y')}}</td>
+            </tr>
+            {% endfor %}
+    
+    </table>
+
+
 {% endblock %}
