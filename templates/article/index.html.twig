@@ -18,12 +18,14 @@
             <tr>
                 <td>{{article.id}}</td>
                 <td>{{article.title}}</td>
-                <td>{{article.content|slice(0,300)~ '...'}} <a href="http://laurel.lpweb-lannion.fr:7775/article/{{article.id}}">Voir plus</a>  </td>
+                <td>{{article.content|slice(0,300)~ '...'}} <a href="{{ path('article.show', {id : article.id}) }}">Voir plus</a>  </td>
                 <td>{{article.createdAt|date('d-m-y')}}</td>
             </tr>
             {% endfor %}
     
     </table>
+
+    {{ knp_pagination_render(articles) }}
 
 
 {% endblock %}

@@ -32,6 +32,13 @@ class Article
      */
     private $content;
 
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="article"))
+     */
+
+    private $category;
+
     /**
      * @ORM\Column(type="datetime")
      */
